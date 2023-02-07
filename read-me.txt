@@ -1,0 +1,1 @@
+An assignment for Skillcrush lesson that points to an api, to choose a random user and user data to display.
