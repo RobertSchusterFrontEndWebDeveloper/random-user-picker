@@ -9,6 +9,8 @@ const getData = async function () {
   // output user result
   const userResults = data.results;
   console.log(userResults);
+
+  
 };
 
 getData();
