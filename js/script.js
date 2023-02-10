@@ -8,10 +8,32 @@ const getData = async function () {
 
   // output user result
   const userResults = data.results;
-  console.log(userResults);
-
-  
+  // console.log(userResults); 
+  displayUsers(userResults);
 };
 
 getData();
+
+ // displayUser function
+const displayUsers = function(userResults) {
+  
+  // First empty the randomFolks constant
+  randomFolks.innerHTML = "";
+
+  // assign random user profile to constants to variables
+  for (const user of userResults) {
+    const country = user.location.country; 
+    const name = user.name.first;
+    const imageUrl = user.picture.medium;
+    const userDiv = document.createElement("div");
+
+    // set up display of above objects
+    userDiv.innerHTML = `
+      <h3>${name}</h3>
+      <p>${country}</p>
+      <img src=${imageUrl} alt="User avatar" />
+      `;
+    randomFolks.append(userDiv);
+  }
+};
 
