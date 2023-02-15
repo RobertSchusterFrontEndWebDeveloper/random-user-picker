@@ -1,8 +1,10 @@
 const randomFolks = document.querySelector(".random-peeps");
+const selectUserNumber = document.querySelector(".num-users");
+let numUsers = "1";  // set initial value 
 
 // connect to api to get user list
-const getData = async function () {
-  const usersRequest = await fetch ("https://randomuser.me/api?results=5");
+const getData = async function (numUsers) {
+  const usersRequest = await fetch (`https://randomuser.me/api?results=${numUsers}`);
   const data = await usersRequest.json(); // parse the api result
   // console.log(data);  // test out the api output
 
@@ -34,4 +36,16 @@ const displayUsers = function(userResults) {
     randomFolks.append(userDiv);
   }
 };
+
+// add choose quantity of profiles to load
+selectUserNumber.addEventListener("change", function (e) {
+  if (e.key === "5") {
+    numUsers = Number(e.target.value);
+  } else if (e.key === "3") {
+    numUsers = Number(e.target.value);
+  } else {
+    numUsers = Number(e.target.value);
+  }
+  getData(numUsers) //pass the number of users selected into the getdata function
+});
 
